@@ -18,6 +18,9 @@ try {
     console.log(`Unable to connect to PG: ${err}`) 
 }
 
+//CONTROLLERS
+const bandsController = require ('./controllers/bands_controller')
+app.use('/bands', bandsController)
 
 // ROOT
 app.get("/", (req, res) => {

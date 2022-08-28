@@ -18,10 +18,13 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     genre: DataTypes.TEXT,
     available_start_time: DataTypes.DATE,
-    end_time: DataTypes.DATE
+    end_time: DataTypes.DATE,
+    thing: {type: DataTypes.STRING}
   }, {
     sequelize,
     modelName: 'events',
+    tableName: 'events',
+    timestamps: false
   });
   return events;
 };
