@@ -1,8 +1,8 @@
 //DEPENDENCIES
-const { Op } = require("sequelize");
-const events = require("express").Router();
-const db = require("../models");
-const { Event } = db;
+const events = require ('express') .Router()
+const db = require ('../models')
+const { Event } = db
+const { Op } = require('sequelize')
    
 // FIND ALL EVENT
 events.get('/', async (req, res) => {
