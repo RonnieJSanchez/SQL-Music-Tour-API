@@ -21,6 +21,10 @@ try {
 //CONTROLLERS
 const bandsController = require ('./controllers/bands_controller')
 app.use('/bands', bandsController)
+const eventsController = require("./controllers/event_controller");
+app.use("/event", eventsController);
+const stagesController = require("./controllers/stage_controller");
+app.use("/stage", stagesController);
 
 // ROOT
 app.get("/", (req, res) => {
