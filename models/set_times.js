@@ -1,33 +1,33 @@
 "use strict";
 const { Model } = require("sequelize");
+const stage = require("./stage");
 module.exports = (sequelize, DataTypes) => {
-  class SetTime extends Model {
+  class set_time extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Band, Event, Stage }) {
-      // band
-      SetTime.belongsTo(Band, {
+    static associate({ Bands, Event, stage }) {
+      set_time.belongsTo(Bands, {
         foreignKey: "band_id",
-        as: "band"
-      })
+        as: "set_times",
+      });
 
       // event
-      SetTime.belongsTo(Event, {
+      set_time.belongsTo(Event, {
         foreignKey: "event_id",
-        as: "event"
-      })
+        as: "event",
+      });
 
-      // stage 
-      SetTime.belongsTo(Stage, {
+      // stage
+      set_time.belongsTo(stage, {
         foreignKey: "stage_id",
-        as: "stage"
-      })
+        as: "stage",
+      });
     }
-  };
-  Set_Time.init(
+  }
+  set_time.init(
     {
       set_time_id: {
         type: DataTypes.INTEGER,
@@ -57,10 +57,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Set_Time",
+      modelName: "set_time",
       tableName: "set_times",
       timestamps: false,
     }
   );
-  return Set_Time;
+  return set_time;
 };
