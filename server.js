@@ -1,4 +1,3 @@
-// DEPENDENCIES
 const express = require("express");
 const app = express();
 const { Sequelize } = require("sequelize");
@@ -9,22 +8,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // SEQUELIZE CONNECTION
-const sequelize = new Sequelize(process.env.PG_URI)
+const sequelize = new Sequelize(process.env.PG_URI);
 
 try {
-    sequelize.authenticate() 
-    console.log(`Connected with Sequelize at ${process.env.PG_URI}`) 
-} catch(err) {
-    console.log(`Unable to connect to PG: ${err}`) 
+  sequelize.authenticate();
+  console.log(`Connected with Sequelize at ${process.env.PG_URI}`);
+} catch (err) {
+  console.log(`Unable to connect to PG: ${err}`);
 }
 
 //CONTROLLERS
-const bandsController = require ('./controllers/bands_controller')
-app.use('/bands', bandsController)
-const eventsController = require("./controllers/event_controller");
-app.use("/event", eventsController);
-const stagesController = require("./controllers/stage_controller");
-app.use("/stage", stagesController);
+const bandsController = require("./controllers/bands_controller");
+app.use("/bands", bandsController);
+
+const eventsController = require("./controllers/event_controller.js");
+app.use("/events", eventsController);
+
+const stagesController = require("./controllers/stage_controller.js");
+app.use("/stages", stagesController);
 
 // ROOT
 app.get("/", (req, res) => {

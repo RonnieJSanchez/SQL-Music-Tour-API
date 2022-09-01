@@ -1,4 +1,3 @@
-
 "use strict";
 const { Model } = require("sequelize");
 const events = require("./events");
